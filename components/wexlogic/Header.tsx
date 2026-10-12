@@ -60,50 +60,22 @@ export function Header() {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Logo size={38} />
           </div>
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <span
-                style={{
-                  fontFamily: "'Outfit', system-ui, sans-serif",
-                  fontSize: '22px',
-                  fontWeight: 900,
-                  background: 'linear-gradient(135deg, #dfb76c 0%, #d4af37 50%, #b89047 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  color: '#d4af37',
-                  letterSpacing: '-0.5px',
-                  lineHeight: 1.1,
-                  display: 'inline-block',
-                }}
-              >
-                WexLogic
-              </span>
-              <span
-                style={{
-                  display: 'inline-block',
-                  width: '7px',
-                  height: '7px',
-                  borderRadius: '50%',
-                  backgroundColor: '#dfb76c',
-                  boxShadow: '0 0 6px rgba(223, 183, 108, 0.6)',
-                }}
-              />
-            </div>
-            <div
-              style={{
-                fontSize: '10px',
-                letterSpacing: '2px',
-                textTransform: 'uppercase',
-                color: '#b89047',
-                fontWeight: 800,
-                fontFamily: "'Outfit', system-ui, sans-serif",
-                lineHeight: 1.2,
-                marginTop: '1px',
-              }}
-            >
-              IT COMPANY
-            </div>
-          </div>
+          <span
+            style={{
+              fontFamily: "'Outfit', system-ui, sans-serif",
+              fontSize: '22px',
+              fontWeight: 900,
+              background: 'linear-gradient(135deg, #dfb76c 0%, #d4af37 50%, #b89047 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              color: '#d4af37',
+              letterSpacing: '-0.5px',
+              lineHeight: 1.1,
+              display: 'inline-block',
+            }}
+          >
+            WexLogic
+          </span>
         </Link>
 
         {/* Desktop nav */}

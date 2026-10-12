@@ -1,4 +1,4 @@
-# WexLogic IT COMPANY — Official Website
+# WexLogic — Official Website
 
 High-impact digital engineering, bespoke Next.js web applications, cinematic CGI/VFX campaigns, and scalable IT solutions.
 

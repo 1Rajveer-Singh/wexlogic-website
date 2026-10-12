@@ -43,12 +43,12 @@ function ProjectModal({ project, onClose }: { project: WorkProject; onClose: () 
           borderRadius: '24px',
           overflowY: 'auto',
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))',
           cursor: 'default',
         }}
       >
         {/* Left Side: Media Section */}
-        <div style={{ padding: '32px', borderRight: '2px solid #1E293B', backgroundColor: '#F8FAFC' }}>
+        <div style={{ padding: 'clamp(16px, 4vw, 32px)', borderRight: '2px solid #1E293B', backgroundColor: '#F8FAFC' }}>
           {project.videos && project.videos.length > 0 ? (
             <div>
               <div
@@ -223,7 +223,7 @@ function ProjectModal({ project, onClose }: { project: WorkProject; onClose: () 
         </div>
 
         {/* Right Side: Information Panel */}
-        <div style={{ padding: '36px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', backgroundColor: '#FFFDF5' }}>
+        <div style={{ padding: 'clamp(16px, 4vw, 36px)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', backgroundColor: '#FFFDF5' }}>
           <div>
             {/* Header tags */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px' }}>

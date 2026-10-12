@@ -16,7 +16,7 @@ const Footer = dynamic(() => import('@/components/wexlogic/Footer').then(mod => 
 import { getProjects, getServices } from '@/lib/db'
 
 export const metadata = {
-  title: 'WexLogic IT COMPANY — India\'s #1 Creative Studio',
+  title: 'WexLogic — India\'s #1 Creative Studio',
   description: 'WexLogic is a creative studio delivering cinematic CGI ads, high-performance Next.js architectures, paid acquisition, and bespoke ERP/CRM dashboards.',
   alternates: {
     canonical: 'https://wexlogic.com'
@@ -178,10 +178,10 @@ export default function HomePage() {
           {/* Left: Headline, Badge, Paragraph & Candy Buttons */}
           <div style={{ flex: '1 1 500px' }}>
             {/* Pill Badge */}
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '16px', flexWrap: 'wrap' }}>
               <span className="badge-pill badge-yellow">
                 <Sparkles size={13} className="text-[#1E293B]" />
-                Next-Gen IT Company
+                Next-Gen Creative Studio
               </span>
               <span className="badge-pill badge-pink" style={{ fontSize: '11px' }}>
                 Est. 2026
@@ -291,7 +291,7 @@ export default function HomePage() {
             </div>
 
             {/* Trust Proof */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginTop: '22px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginTop: '22px', flexWrap: 'wrap' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <CheckCircle2 size={16} className="text-[#34D399]" />
                 <span style={{ fontSize: '12.5px', fontWeight: 700, color: '#1E293B' }}>Zero Bloat Code</span>

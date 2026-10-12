@@ -10,8 +10,8 @@ export function DirectCallWidget() {
     <div
       style={{
         position: 'fixed',
-        bottom: '28px',
-        right: '28px',
+        bottom: 'clamp(16px, 3vw, 28px)',
+        right: 'clamp(16px, 3vw, 28px)',
         zIndex: 9999,
         fontFamily: "'Outfit', system-ui, sans-serif",
       }}

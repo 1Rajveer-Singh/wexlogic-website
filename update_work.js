@@ -38,7 +38,7 @@ projects.push({
   slug: "logo-designs",
   category: "Branding",
   desc: "Distinctive logo and identity marks.",
-  image: "/company-logo.png",
+  image: "/Logo/phycics logo.png",
   videoUrl: "",
   tags: ["Logo", "Identity"],
   featured: false,
@@ -47,9 +47,8 @@ projects.push({
   solution: "Focused on geometric precision and meaning.",
   results: ["Strong brand recall", "Versatile usage"],
   gallery: [
-    "/company-logo.png",
-    "/Logo/old logo.png",
     "/Logo/phycics logo.png",
+    "/Logo/old logo.png",
     "/Logo/tushar 0.png",
     "/Logo/tushar 01.png"
   ]

@@ -68,20 +68,6 @@ export function Footer() {
               >
                 WexLogic
               </div>
-              <div
-                style={{
-                  fontSize: '10px',
-                  letterSpacing: '2px',
-                  textTransform: 'uppercase',
-                  color: '#b89047',
-                  fontWeight: 800,
-                  fontFamily: "'Outfit', system-ui, sans-serif",
-                  lineHeight: 1.2,
-                  marginTop: '1px',
-                }}
-              >
-                IT COMPANY
-              </div>
             </div>
           </Link>
           <p style={{ fontSize: '14px', lineHeight: 1.6, color: '#64748B', fontWeight: 500 }}>
@@ -262,7 +248,7 @@ export function Footer() {
         }}
       >
         <div style={{ fontSize: '13px', fontWeight: 600, color: '#64748B', fontFamily: "'Outfit'" }}>
-          © WexLogic IT COMPANY {new Date().getFullYear()} — We Create the Impossible
+          © WexLogic {new Date().getFullYear()} — We Create the Impossible
         </div>
         <div style={{ display: 'flex', gap: '20px', fontSize: '13px', fontWeight: 600 }}>
           <a href="#" style={{ color: '#64748B', textDecoration: 'none' }} className="hover:text-slate-900">

@@ -6,8 +6,8 @@ import './globals.css'
 export const metadata: Metadata = {
   metadataBase: new URL('https://wexlogic.com'),
   title: {
-    default: 'WexLogic IT COMPANY — India\'s #1 Creative Studio',
-    template: '%s | WexLogic IT COMPANY'
+    default: 'WexLogic — India\'s #1 Creative Studio',
+    template: '%s | WexLogic'
   },
   description: 'CGI & VFX Ads, Web & App Development, Branding, SEO & Marketing, Paid Ads, Video Editing, custom CRM/ERP integrations — playful & high-impact digital solutions.',
   alternates: {
@@ -18,15 +18,15 @@ export const metadata: Metadata = {
     apple: '/company-logo.png',
   },
   openGraph: {
-    title: 'WexLogic IT COMPANY — India\'s #1 Creative Studio',
+    title: 'WexLogic — India\'s #1 Creative Studio',
     description: 'CGI & VFX Ads, Web & App Development, Branding, SEO & Marketing, Paid Ads, Video Editing, custom CRM/ERP integrations — playful & high-impact digital solutions.',
     url: 'https://wexlogic.com',
-    siteName: 'WexLogic IT COMPANY',
+    siteName: 'WexLogic',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'WexLogic IT COMPANY — India\'s #1 Creative Studio',
+    title: 'WexLogic — India\'s #1 Creative Studio',
     description: 'CGI & VFX Ads, Web & App Development, Branding, SEO & Marketing, Paid Ads, Video Editing, custom CRM/ERP integrations — playful & high-impact digital solutions.',
   }
 }
