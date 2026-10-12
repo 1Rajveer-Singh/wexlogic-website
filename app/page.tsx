@@ -7,6 +7,7 @@ import { ScrollReveal } from '@/components/wexlogic/ScrollReveal'
 
 const ProcessSection = dynamic(() => import('@/components/wexlogic/ProcessSection').then(mod => mod.ProcessSection))
 const Ticker = dynamic(() => import('@/components/wexlogic/Ticker').then(mod => mod.Ticker))
+import { TypewriterText } from '@/components/wexlogic/TypewriterText'
 const ServicesSection = dynamic(() => import('@/components/wexlogic/ServicesSection').then(mod => mod.ServicesSection))
 const WorkSection = dynamic(() => import('@/components/wexlogic/WorkSection').then(mod => mod.WorkSection))
 const TestimonialsSection = dynamic(() => import('@/components/wexlogic/TestimonialsSection').then(mod => mod.TestimonialsSection))
@@ -230,6 +231,11 @@ export default function HomePage() {
                 </svg>
               </span>
             </h1>
+            
+            {/* Animated Rotating Typewriter Effect */}
+            <div>
+              <TypewriterText />
+            </div>
 
             {/* Description Paragraph with High-Contrast Legibility Backdrop */}
             <div

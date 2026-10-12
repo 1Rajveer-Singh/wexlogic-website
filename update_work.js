@@ -38,7 +38,7 @@ projects.push({
   slug: "logo-designs",
   category: "Branding",
   desc: "Distinctive logo and identity marks.",
-  image: "/Logo/Creative Nests Logo.png",
+  image: "/company-logo.png",
   videoUrl: "",
   tags: ["Logo", "Identity"],
   featured: false,
@@ -47,7 +47,7 @@ projects.push({
   solution: "Focused on geometric precision and meaning.",
   results: ["Strong brand recall", "Versatile usage"],
   gallery: [
-    "/Logo/Creative Nests Logo.png",
+    "/company-logo.png",
     "/Logo/old logo.png",
     "/Logo/phycics logo.png",
     "/Logo/tushar 0.png",
