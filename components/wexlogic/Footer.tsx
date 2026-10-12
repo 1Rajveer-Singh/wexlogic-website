@@ -2,87 +2,118 @@ import Link from 'next/link'
 import { LogoSmall } from './Logo'
 
 export function Footer() {
-  const colors = ['#dfb76c', '#c5a059', '#e5c185']
-  const hrefs = [
-    'https://www.instagram.com/wexlogicofficial?utm_source=qr&igsh=cGo5dmxuaDJqejdy',
-    'https://wa.me/917737297548',
-    'mailto:info@wexlogic.com'
+  const socials = [
+    {
+      name: 'Instagram',
+      href: 'https://www.instagram.com/wexlogicofficial?utm_source=qr&igsh=cGo5dmxuaDJqejdy',
+      bg: '#F472B6',
+      color: '#FFFFFF',
+    },
+    {
+      name: 'WhatsApp',
+      href: 'https://wa.me/917737297548',
+      bg: '#34D399',
+      color: '#1E293B',
+    },
+    {
+      name: 'Email',
+      href: 'mailto:info@wexlogic.com',
+      bg: '#8B5CF6',
+      color: '#FFFFFF',
+    },
   ]
 
   return (
     <footer
       style={{
-        background: 'rgba(8, 7, 13, 0.95)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-        borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-        padding: '80px 28px 40px',
+        backgroundColor: '#FFFDF5',
+        borderTop: '2px solid #1E293B',
+        padding: '52px 16px 32px',
         position: 'relative',
-        zIndex: 10
+        zIndex: 10,
       }}
     >
-      <style dangerouslySetInnerHTML={{__html: `
-        .social-btn-0:hover { background: #dfb76c !important; color: #08070d !important; box-shadow: 0 0 12px #dfb76c; }
-        .social-btn-1:hover { background: #c5a059 !important; color: #08070d !important; box-shadow: 0 0 12px #c5a059; }
-        .social-btn-2:hover { background: #e5c185 !important; color: #08070d !important; box-shadow: 0 0 12px #e5c185; }
-        .footer-link {
-          font-size: 13px;
-          color: #9ca3af;
-          text-decoration: none;
-          transition: color 0.2s ease;
-        }
-        .footer-link:hover {
-          color: #fff !important;
-        }
-      `}} />
-
-      <div 
-        style={{ 
-          maxWidth: '1200px', 
-          margin: '0 auto', 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', 
-          gap: '48px',
-          marginBottom: '56px'
+      <div
+        style={{
+          width: '100%',
+          maxWidth: '1560px',
+          margin: '0 auto',
+          padding: '0 6px',
+          boxSizing: 'border-box',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+          gap: '40px',
+          marginBottom: '44px',
         }}
       >
         {/* Col 1: Brand details */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
-            <LogoSmall />
-            <span className="cn-syne" style={{ fontSize: '18px', fontWeight: 800, color: '#fff' }}>
-              <span style={{ background: 'linear-gradient(135deg, #dfb76c, #b89047)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>WexLogic</span>
-            </span>
-          </Link>
-          <p style={{ fontSize: '13px', lineHeight: 1.6, color: '#9ca3af', fontWeight: 400 }}>
-            Premium production studio building high-performance digital platforms, CGI campaigns, and scalable custom enterprise systems.
-          </p>
-          <div style={{ display: 'flex', gap: '14px', marginTop: '8px' }}>
-            {['Instagram', 'WhatsApp', 'Email'].map((social, idx) => {
-              const isEmail = social === 'Email';
-              return (
-                <a 
-                  key={social} 
-                  href={hrefs[idx]}
-                  target={isEmail ? undefined : "_blank"} 
-                  rel={isEmail ? undefined : "noopener noreferrer"}
-                  className={`social-btn-${idx}`}
-                  style={{ 
-                    fontSize: '11px', 
-                    letterSpacing: '1px', 
-                    textTransform: 'uppercase', 
-                    fontWeight: 700, 
-                    textDecoration: 'none', 
-                    color: colors[idx], 
-                  border: `1.5px solid ${colors[idx]}`,
-                  padding: '6px 14px',
-                  borderRadius: '99px',
-                  transition: 'all 0.2s ease',
-                  background: 'transparent'
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <LogoSmall />
+            </div>
+            <div>
+              <div
+                style={{
+                  fontFamily: "'Outfit', system-ui, sans-serif",
+                  fontSize: '22px',
+                  fontWeight: 900,
+                  background: 'linear-gradient(135deg, #dfb76c 0%, #d4af37 50%, #b89047 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  color: '#d4af37',
+                  letterSpacing: '-0.5px',
+                  lineHeight: 1.1,
                 }}
               >
-                {social}
-              </a>
+                WexLogic
+              </div>
+              <div
+                style={{
+                  fontSize: '10px',
+                  letterSpacing: '2px',
+                  textTransform: 'uppercase',
+                  color: '#b89047',
+                  fontWeight: 800,
+                  fontFamily: "'Outfit', system-ui, sans-serif",
+                  lineHeight: 1.2,
+                  marginTop: '1px',
+                }}
+              >
+                IT COMPANY
+              </div>
+            </div>
+          </Link>
+          <p style={{ fontSize: '14px', lineHeight: 1.6, color: '#64748B', fontWeight: 500 }}>
+            Next-gen IT studio building high-performance digital platforms, CGI campaigns, and scalable custom enterprise systems.
+          </p>
+          <div style={{ display: 'flex', gap: '10px', marginTop: '4px', flexWrap: 'wrap' }}>
+            {socials.map((social) => {
+              const isEmail = social.name === 'Email'
+              return (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target={isEmail ? undefined : '_blank'}
+                  rel={isEmail ? undefined : 'noopener noreferrer'}
+                  style={{
+                    fontSize: '12px',
+                    letterSpacing: '0.5px',
+                    fontWeight: 800,
+                    fontFamily: "'Outfit', system-ui, sans-serif",
+                    textDecoration: 'none',
+                    color: social.color,
+                    backgroundColor: social.bg,
+                    border: '2px solid #1E293B',
+                    boxShadow: '2px 2px 0px #1E293B',
+                    padding: '6px 14px',
+                    borderRadius: '9999px',
+                    transition: 'all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                  }}
+                  className="hover:-translate-y-0.5 active:translate-y-0.5"
+                >
+                  {social.name}
+                </a>
               )
             })}
           </div>
@@ -90,21 +121,38 @@ export function Footer() {
 
         {/* Col 2: Navigation Links */}
         <div>
-          <h3 className="cn-syne" style={{ fontSize: '15px', fontWeight: 800, color: '#fff', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '24px' }}>
+          <h3
+            style={{
+              fontFamily: "'Outfit', system-ui, sans-serif",
+              fontSize: '15px',
+              fontWeight: 800,
+              color: '#1E293B',
+              textTransform: 'uppercase',
+              letterSpacing: '1px',
+              marginBottom: '18px',
+            }}
+          >
             Quick Navigation
           </h3>
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {[
               { label: 'Home Page', href: '/' },
               { label: 'Selected Work', href: '/work' },
               { label: 'Our Services', href: '/services' },
               { label: 'Insights Blog', href: '/blog' },
-              { label: 'Get In Touch', href: '/contact' }
+              { label: 'Get In Touch', href: '/contact' },
             ].map((link) => (
               <li key={link.label}>
-                <Link 
-                  href={link.href} 
-                  className="footer-link"
+                <Link
+                  href={link.href}
+                  style={{
+                    fontSize: '14px',
+                    color: '#64748B',
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                    transition: 'color 0.2s',
+                  }}
+                  className="hover:text-slate-900 hover:underline"
                 >
                   {link.label}
                 </Link>
@@ -115,21 +163,38 @@ export function Footer() {
 
         {/* Col 3: Services List */}
         <div>
-          <h3 className="cn-syne" style={{ fontSize: '15px', fontWeight: 800, color: '#fff', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '24px' }}>
+          <h3
+            style={{
+              fontFamily: "'Outfit', system-ui, sans-serif",
+              fontSize: '15px',
+              fontWeight: 800,
+              color: '#1E293B',
+              textTransform: 'uppercase',
+              letterSpacing: '1px',
+              marginBottom: '18px',
+            }}
+          >
             Core Services
           </h3>
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {[
               { label: 'CGI & VFX Advertisements', href: '/services/cgi-vfx-ads' },
-              { label: 'NextJS Web Engineering', href: '/services/web-app-dev' },
+              { label: 'Next.js Web Engineering', href: '/services/web-app-dev' },
               { label: 'Custom CRM Automations', href: '/services/crm-systems' },
               { label: 'Enterprise ERP Systems', href: '/services/erp-solutions' },
-              { label: 'High Intent SEO Campaigns', href: '/services/seo-marketing' }
+              { label: 'High Intent SEO Campaigns', href: '/services/seo-marketing' },
             ].map((srv) => (
               <li key={srv.label}>
-                <Link 
-                  href={srv.href} 
-                  className="footer-link"
+                <Link
+                  href={srv.href}
+                  style={{
+                    fontSize: '14px',
+                    color: '#64748B',
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                    transition: 'color 0.2s',
+                  }}
+                  className="hover:text-slate-900 hover:underline"
                 >
                   {srv.label}
                 </Link>
@@ -139,29 +204,40 @@ export function Footer() {
         </div>
 
         {/* Col 4: Contact & Office Info */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          <h3 className="cn-syne" style={{ fontSize: '15px', fontWeight: 800, color: '#fff', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '10px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <h3
+            style={{
+              fontFamily: "'Outfit', system-ui, sans-serif",
+              fontSize: '15px',
+              fontWeight: 800,
+              color: '#1E293B',
+              textTransform: 'uppercase',
+              letterSpacing: '1px',
+              marginBottom: '2px',
+            }}
+          >
             Contact & HQ
           </h3>
-          <div style={{ fontSize: '13px', color: '#9ca3af', lineHeight: 1.6 }}>
-            <div>Email: <span style={{ color: '#fff', fontWeight: 600 }}>info@wexlogic.com</span></div>
-            <div style={{ marginTop: '4px' }}>Phone: <span style={{ color: '#fff', fontWeight: 600 }}>+91 77372 97548</span></div>
-            <div style={{ marginTop: '4px' }}>Office: <span style={{ color: '#fff', fontWeight: 600 }}>Rajasthan, India</span></div>
+          <div style={{ fontSize: '14px', color: '#64748B', lineHeight: 1.6, fontWeight: 500 }}>
+            <div>Email: <span style={{ color: '#1E293B', fontWeight: 700 }}>info@wexlogic.com</span></div>
+            <div style={{ marginTop: '4px' }}>Phone: <span style={{ color: '#1E293B', fontWeight: 700 }}>+91 77372 97548</span></div>
+            <div style={{ marginTop: '4px' }}>Office: <span style={{ color: '#1E293B', fontWeight: 700 }}>Rajasthan, India</span></div>
           </div>
           <div>
-            <div 
-              style={{ 
-                background: 'rgba(16, 185, 129, 0.08)', 
-                border: '1px solid rgba(16, 185, 129, 0.25)', 
-                padding: '8px 16px', 
-                borderRadius: '8px', 
+            <div
+              style={{
+                backgroundColor: '#ECFDF5',
+                border: '2px solid #1E293B',
+                boxShadow: '3px 3px 0px #1E293B',
+                padding: '6px 12px',
+                borderRadius: '12px',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '8px'
+                gap: '8px',
               }}
             >
-              <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981', boxShadow: '0 0 8px #10b981' }} />
-              <span style={{ fontSize: '10px', fontWeight: 700, color: '#10b981', textTransform: 'uppercase', letterSpacing: '1.5px' }}>
+              <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#10B981' }} />
+              <span style={{ fontSize: '11px', fontWeight: 800, color: '#065F46', textTransform: 'uppercase', letterSpacing: '1px', fontFamily: "'Outfit'" }}>
                 Accepting Q3 Enquiries
               </span>
             </div>
@@ -170,25 +246,31 @@ export function Footer() {
       </div>
 
       {/* Bottom Row Panel */}
-      <div 
-        style={{ 
-          maxWidth: '1200px', 
-          margin: '0 auto', 
-          borderTop: '1px solid rgba(255, 255, 255, 0.06)', 
-          paddingTop: '32px', 
-          display: 'flex', 
-          justifyContent: 'space-between', 
-          alignItems: 'center', 
-          flexWrap: 'wrap', 
-          gap: '20px'
+      <div
+        style={{
+          width: '100%',
+          maxWidth: '1560px',
+          margin: '0 auto',
+          padding: '24px 6px 0',
+          boxSizing: 'border-box',
+          borderTop: '2px solid #E2E8F0',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '16px',
         }}
       >
-        <div style={{ fontSize: '11px', letterSpacing: '2px', textTransform: 'uppercase', color: '#6b7280' }}>
-          © WexLogic {new Date().getFullYear()} — We Create the Impossible
+        <div style={{ fontSize: '13px', fontWeight: 600, color: '#64748B', fontFamily: "'Outfit'" }}>
+          © WexLogic IT COMPANY {new Date().getFullYear()} — We Create the Impossible
         </div>
-        <div style={{ display: 'flex', gap: '24px', fontSize: '11px' }}>
-          <a href="#" className="text-[#6b7280] hover:text-white transition-colors duration-200" style={{ textDecoration: 'none' }}>Privacy Policy</a>
-          <a href="#" className="text-[#6b7280] hover:text-white transition-colors duration-200" style={{ textDecoration: 'none' }}>Terms & Conditions</a>
+        <div style={{ display: 'flex', gap: '20px', fontSize: '13px', fontWeight: 600 }}>
+          <a href="#" style={{ color: '#64748B', textDecoration: 'none' }} className="hover:text-slate-900">
+            Privacy Policy
+          </a>
+          <a href="#" style={{ color: '#64748B', textDecoration: 'none' }} className="hover:text-slate-900">
+            Terms & Conditions
+          </a>
         </div>
       </div>
     </footer>

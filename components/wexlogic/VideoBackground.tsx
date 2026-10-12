@@ -5,16 +5,14 @@ import { useEffect, useRef } from 'react'
 export function VideoBackground({ src }: { src: string }) {
   const videoRef = useRef<HTMLVideoElement>(null)
 
-  // Defer video playback until after the page is interactive
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
 
-    // Only start loading + playing after everything else is done
     const loadVideo = () => {
       video.src = src
       video.load()
-      video.play().catch(() => {/* autoplay blocked, silent fail */})
+      video.play().catch(() => {/* autoplay blocked */})
     }
 
     if ('requestIdleCallback' in window) {
@@ -39,13 +37,22 @@ export function VideoBackground({ src }: { src: string }) {
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          zIndex: -2,
+          zIndex: 0,
           pointerEvents: 'none',
-          opacity: 0.35,
+          opacity: 0.12,
+          mixBlendMode: 'multiply',
         }}
       />
-      {/* Radial vignette overlay blending video into the dark background */}
-      <div className="video-overlay-vignette" />
+      {/* Warm paper gradient overlay */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'radial-gradient(circle at center, rgba(255, 253, 245, 0.4) 0%, rgba(255, 253, 245, 0.95) 85%)',
+          pointerEvents: 'none',
+          zIndex: 1,
+        }}
+      />
     </>
   )
 }

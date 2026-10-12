@@ -15,11 +15,10 @@ export const metadata = {
 
 export default function ServicesPage() {
   return (
-    <div style={{ position: 'relative', minHeight: '100vh', color: '#f3f4f6', backgroundColor: '#000' }}>
-      
+    <div style={{ position: 'relative', minHeight: '100vh', color: '#1E293B', backgroundColor: '#FFFDF5' }}>
       <Header />
 
-      <section style={{ padding: '40px 0' }}>
+      <section style={{ padding: '20px 0 0' }}>
         <ServicesSection services={getServices()} />
       </section>
 

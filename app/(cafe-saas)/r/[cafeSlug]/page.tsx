@@ -3,11 +3,18 @@ import { prisma } from '@/lib/prisma'
 import { CafeClient } from './CafeClient'
 import { Logo } from '@/components/wexlogic/Logo'
 
+export const dynamic = 'force-dynamic'
+
 export default async function CafePage({ params }: { params: Promise<{ cafeSlug: string }> }) {
   const { cafeSlug } = await params
-  const cafe = await prisma.cafe.findUnique({
-    where: { slug: cafeSlug }
-  })
+  let cafe = null
+  try {
+    cafe = await prisma.cafe.findUnique({
+      where: { slug: cafeSlug }
+    })
+  } catch (error) {
+    console.warn('Database unavailable during render:', error)
+  }
 
   if (!cafe) {
     return notFound()

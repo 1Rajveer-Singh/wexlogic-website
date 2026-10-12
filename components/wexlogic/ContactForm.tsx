@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { Sparkles, ArrowRight, CheckCircle2, HelpCircle } from 'lucide-react'
 
 interface FAQItem {
   question: string
@@ -59,8 +60,7 @@ export function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
-    // Simple validation
+
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       setValidationError('Please fill out Name, Email, and Message.')
       return
@@ -86,7 +86,7 @@ export function ContactForm() {
       } else {
         setStatus('error')
       }
-    } catch (err) {
+    } catch {
       setStatus('error')
     }
   }
@@ -94,125 +94,261 @@ export function ContactForm() {
   return (
     <>
       {/* CONTACT SECTION */}
-      <section style={{ background: 'rgba(8, 7, 13, 0.45)', padding: '80px 28px 48px', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-          
-          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
+      <section
+        style={{
+          backgroundColor: '#FFFDF5',
+          padding: '36px 16px 44px',
+          borderBottom: '2px solid #1E293B',
+        }}
+      >
+        <div
+          style={{
+            width: '100%',
+            maxWidth: '1560px',
+            margin: '0 auto',
+            padding: '0 6px',
+            boxSizing: 'border-box',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '20px' }}>
             <div>
-              <div style={{ background: 'rgba(223, 183, 108, 0.24)', border: '1px solid rgba(223, 183, 108, 0.3)', display: 'inline-block', padding: '6px 18px', borderRadius: '99px', marginBottom: '16px' }}>
-                <span style={{ fontSize: '10px', letterSpacing: '4px', textTransform: 'uppercase', fontWeight: 700, color: '#dfb76c' }}>Get In Touch</span>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
+                <span className="badge-pill badge-yellow">
+                  <Sparkles size={13} className="text-[#1E293B]" />
+                  GET IN TOUCH
+                </span>
               </div>
-              <h1 className="cn-bebas" style={{ fontSize: 'clamp(38px, 6vw, 64px)', letterSpacing: '1px', color: '#fff', lineHeight: 1 }}>
-                Start Your <span style={{ background: 'linear-gradient(135deg, #dfb76c, #b89047)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Journey</span>
+              <h1
+                style={{
+                  fontFamily: "'Outfit', system-ui, sans-serif",
+                  fontSize: 'clamp(38px, 6vw, 64px)',
+                  fontWeight: 900,
+                  color: '#1E293B',
+                  letterSpacing: '-1px',
+                  lineHeight: 1.1,
+                }}
+              >
+                Start Your{' '}
+                <span
+                  style={{
+                    backgroundColor: '#8B5CF6',
+                    color: '#FFFFFF',
+                    padding: '2px 14px',
+                    borderRadius: '14px',
+                    border: '2px solid #1E293B',
+                    boxShadow: '3px 3px 0px #1E293B',
+                    display: 'inline-block',
+                    transform: 'rotate(-1deg)',
+                  }}
+                >
+                  Journey
+                </span>
               </h1>
             </div>
-            <div style={{ fontSize: '12px', letterSpacing: '2px', textTransform: 'uppercase', color: '#9ca3af', fontWeight: 600, textAlign: 'right' }}>
-              Zero Risk.<br />Pragmatic Value.
+            <div
+              style={{
+                fontFamily: "'Outfit', system-ui, sans-serif",
+                fontSize: '13px',
+                letterSpacing: '1px',
+                textTransform: 'uppercase',
+                color: '#64748B',
+                fontWeight: 700,
+                textAlign: 'right',
+              }}
+            >
+              Zero Risk · Pragmatic Value
             </div>
           </div>
 
           {/* Grid Layout */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px', marginTop: '44px' }}>
-
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '36px', marginTop: '48px' }}>
             {/* Info Panel */}
-            <div className="glass-card" style={{ padding: '36px', display: 'flex', flexDirection: 'column', gap: '28px', background: 'rgba(255, 255, 255, 0.02)' }}>
+            <div
+              className="sticker-card"
+              style={{
+                backgroundColor: '#FFFFFF',
+                border: '2px solid #1E293B',
+                borderRadius: '24px',
+                padding: '36px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '24px',
+                boxShadow: '6px 6px 0px #1E293B',
+              }}
+            >
               <div>
-                <h2 className="cn-syne" style={{ fontSize: '24px', fontWeight: 800, color: '#fff', marginBottom: '8px' }}>Contact Details</h2>
-                <div style={{ width: '40px', height: '3px', background: '#dfb76c', borderRadius: '99px' }} />
+                <h2
+                  style={{
+                    fontFamily: "'Outfit', system-ui, sans-serif",
+                    fontSize: '24px',
+                    fontWeight: 800,
+                    color: '#1E293B',
+                    marginBottom: '8px',
+                  }}
+                >
+                  Contact Details
+                </h2>
+                <div style={{ width: '48px', height: '4px', backgroundColor: '#FBBF24', borderRadius: '9999px', border: '1px solid #1E293B' }} />
               </div>
+
               {[
-                { label: 'Email Address', value: 'info@wexlogic.com', link: 'mailto:info@wexlogic.com' },
-                { label: 'WhatsApp Chat', value: '+91 77372 97548', link: 'https://wa.me/917737297548' },
-                { label: 'Social Channels', value: '@wexlogicofficial', link: 'https://www.instagram.com/wexlogicofficial?utm_source=qr&igsh=cGo5dmxuaDJqejdy' },
-                { label: 'Primary Office', value: 'Rajasthan — Serving Global Accounts', link: null },
-              ].map(({ label, value, link }) => (
-                <div key={label}>
-                  <div style={{ fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', color: '#dfb76c', fontWeight: 700, marginBottom: '4px' }}>{label}</div>
+                { label: 'Email Address', value: 'info@wexlogic.com', link: 'mailto:info@wexlogic.com', badge: '#8B5CF6' },
+                { label: 'WhatsApp Chat', value: '+91 77372 97548', link: 'https://wa.me/917737297548', badge: '#34D399' },
+                { label: 'Social Channels', value: '@wexlogicofficial', link: 'https://www.instagram.com/wexlogicofficial?utm_source=qr&igsh=cGo5dmxuaDJqejdy', badge: '#F472B6' },
+                { label: 'Primary Studio', value: 'Rajasthan — Serving Global Accounts', link: null, badge: '#FBBF24' },
+              ].map(({ label, value, link, badge }) => (
+                <div key={label} style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: badge }} />
+                    <span style={{ fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#64748B', fontWeight: 700, fontFamily: "'Outfit'" }}>
+                      {label}
+                    </span>
+                  </div>
                   {link ? (
-                    <a href={link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: '#fff', transition: 'color 0.2s' }} onMouseOver={(e) => (e.currentTarget.style.color = '#dfb76c')} onMouseOut={(e) => (e.currentTarget.style.color = '#fff')}>
-                      <div className="cn-syne" style={{ fontSize: '17px', fontWeight: 700 }}>{value}</div>
+                    <a
+                      href={link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        textDecoration: 'none',
+                        color: '#1E293B',
+                        fontFamily: "'Outfit', system-ui, sans-serif",
+                        fontSize: '17px',
+                        fontWeight: 700,
+                      }}
+                      className="hover:text-purple-600 hover:underline"
+                    >
+                      {value}
                     </a>
                   ) : (
-                    <div className="cn-syne" style={{ fontSize: '17px', fontWeight: 700, color: '#fff' }}>{value}</div>
+                    <div style={{ fontFamily: "'Outfit', system-ui, sans-serif", fontSize: '17px', fontWeight: 700, color: '#1E293B' }}>
+                      {value}
+                    </div>
                   )}
                 </div>
               ))}
-              <div style={{ marginTop: 'auto' }}>
-                <div style={{ background: 'rgba(223, 183, 108, 0.24)', border: '1px solid rgba(223, 183, 108, 0.25)', padding: '8px 16px', borderRadius: '6px', display: 'inline-block' }}>
-                  <span style={{ fontSize: '9px', letterSpacing: '2px', textTransform: 'uppercase', color: '#dfb76c', fontWeight: 700 }}>WexLogic Digital Studio</span>
-                </div>
+
+              <div style={{ marginTop: 'auto', paddingTop: '16px' }}>
+                <span className="badge-pill badge-mint" style={{ fontSize: '11px' }}>
+                  WexLogic Digital Studio
+                </span>
               </div>
             </div>
 
             {/* Form Panel */}
-            <div className="glass-card" style={{ padding: '36px' }}>
+            <div
+              className="sticker-card"
+              style={{
+                backgroundColor: '#FFFFFF',
+                border: '2px solid #1E293B',
+                borderRadius: '24px',
+                padding: '36px',
+                boxShadow: '6px 6px 0px #1E293B',
+              }}
+            >
               {status === 'success' ? (
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '300px', textAlign: 'center', gap: '20px' }}>
-                  <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(16, 185, 129, 0.1)', border: '2px solid #10b981', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '28px', color: '#10b981', animation: 'scaleUp 0.3s ease' }}>✓</div>
-                  <h3 className="cn-syne" style={{ fontSize: '22px', fontWeight: 800, color: '#fff' }}>Message Sent!</h3>
-                  <p style={{ fontSize: '14px', color: '#9ca3af', lineHeight: 1.6, maxWidth: '300px' }}>
-                    Thank you. We have received your query and will reach out to you within the next 12 hours.
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '320px', textAlign: 'center', gap: '18px' }}>
+                  <div
+                    style={{
+                      width: '64px',
+                      height: '64px',
+                      borderRadius: '50%',
+                      backgroundColor: '#ECFDF5',
+                      border: '2px solid #1E293B',
+                      boxShadow: '3px 3px 0px #1E293B',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '28px',
+                      color: '#059669',
+                    }}
+                  >
+                    ✓
+                  </div>
+                  <h3 style={{ fontFamily: "'Outfit'", fontSize: '24px', fontWeight: 800, color: '#1E293B' }}>Message Sent!</h3>
+                  <p style={{ fontSize: '15px', color: '#64748B', lineHeight: 1.6, maxWidth: '320px', fontWeight: 500 }}>
+                    Thank you! We received your inquiry and our team will get back to you within 12 hours.
                   </p>
-                  <button onClick={() => setStatus('idle')} className="glass-btn-secondary" style={{ padding: '10px 24px', fontSize: '10px', marginTop: '12px' }}>
+                  <button onClick={() => setStatus('idle')} className="candy-btn-secondary" style={{ padding: '10px 24px', fontSize: '13px', marginTop: '12px' }}>
                     Send Another Message
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '22px' }}>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '16px' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                      <label htmlFor="name" style={{ fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', color: '#9ca3af', fontWeight: 700 }}>Name</label>
-                      <input id="name" name="name" type="text" value={formData.name} onChange={handleInputChange} placeholder="Your name" className="neon-input" />
+                      <label htmlFor="name" style={{ fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#1E293B', fontWeight: 800, fontFamily: "'Outfit'" }}>
+                        Name
+                      </label>
+                      <input id="name" name="name" type="text" value={formData.name} onChange={handleInputChange} placeholder="Your name" className="playful-input" />
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                      <label htmlFor="email" style={{ fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', color: '#9ca3af', fontWeight: 700 }}>Email</label>
-                      <input id="email" name="email" type="email" value={formData.email} onChange={handleInputChange} placeholder="you@example.com" className="neon-input" />
+                      <label htmlFor="email" style={{ fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#1E293B', fontWeight: 800, fontFamily: "'Outfit'" }}>
+                        Email
+                      </label>
+                      <input id="email" name="email" type="email" value={formData.email} onChange={handleInputChange} placeholder="you@example.com" className="playful-input" />
                     </div>
                   </div>
-                  
+
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                    <label htmlFor="subject" style={{ fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', color: '#9ca3af', fontWeight: 700 }}>Subject</label>
-                    <input id="subject" name="subject" type="text" value={formData.subject} onChange={handleInputChange} placeholder="What's this about?" className="neon-input" />
+                    <label htmlFor="subject" style={{ fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#1E293B', fontWeight: 800, fontFamily: "'Outfit'" }}>
+                      Subject
+                    </label>
+                    <input id="subject" name="subject" type="text" value={formData.subject} onChange={handleInputChange} placeholder="What's this about?" className="playful-input" />
                   </div>
-                  
+
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                    <label htmlFor="message" style={{ fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', color: '#9ca3af', fontWeight: 700 }}>Message</label>
+                    <label htmlFor="message" style={{ fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#1E293B', fontWeight: 800, fontFamily: "'Outfit'" }}>
+                      Message
+                    </label>
                     <textarea
                       id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
-                      placeholder="Tell us about your project, timelines, or specifications..."
-                      className="neon-input"
+                      placeholder="Tell us about your project, goals, or specifications..."
+                      className="playful-input"
                       style={{ resize: 'vertical', minHeight: '120px', lineHeight: 1.6 }}
                     />
                   </div>
 
                   {validationError && (
-                    <div style={{ color: '#ef4444', fontSize: '12px', fontWeight: 600 }}>
+                    <div style={{ color: '#DC2626', fontSize: '13px', fontWeight: 700, fontFamily: "'Outfit'" }}>
                       ⚠️ {validationError}
                     </div>
                   )}
 
                   {status === 'error' && (
-                    <div style={{ color: '#ef4444', fontSize: '12px', fontWeight: 600 }}>
-                      ❌ There was a problem submitting your message. Please try again.
+                    <div style={{ color: '#DC2626', fontSize: '13px', fontWeight: 700, fontFamily: "'Outfit'" }}>
+                      ❌ There was a problem submitting your message. Please try again or WhatsApp us.
                     </div>
                   )}
 
                   <button
                     type="submit"
                     disabled={status === 'submitting'}
-                    className="gradient-btn-primary"
+                    className="candy-btn-primary"
                     style={{
                       alignSelf: 'flex-start',
-                      border: 'none',
-                      cursor: status === 'submitting' ? 'not-allowed' : 'pointer',
-                      marginTop: '10px',
-                      opacity: status === 'submitting' ? 0.7 : 1
+                      marginTop: '8px',
+                      opacity: status === 'submitting' ? 0.7 : 1,
                     }}
                   >
-                    {status === 'submitting' ? 'Sending Message...' : 'Send Message'}
+                    <span>{status === 'submitting' ? 'Sending Message...' : 'Send Message'}</span>
+                    <div
+                      style={{
+                        width: '22px',
+                        height: '22px',
+                        borderRadius: '50%',
+                        backgroundColor: '#FFFFFF',
+                        color: '#1E293B',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      <ArrowRight size={13} strokeWidth={3} />
+                    </div>
                   </button>
                 </form>
               )}
@@ -222,40 +358,112 @@ export function ContactForm() {
       </section>
 
       {/* FAQ SECTION */}
-      <section style={{ padding: '64px 28px 80px', maxWidth: '800px', margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: '44px' }}>
-          <div style={{ background: 'rgba(223, 183, 108, 0.24)', border: '1px solid rgba(223, 183, 108, 0.3)', display: 'inline-block', padding: '6px 16px', borderRadius: '99px', marginBottom: '16px' }}>
-            <span style={{ fontSize: '9px', letterSpacing: '3px', textTransform: 'uppercase', fontWeight: 700, color: '#dfb76c' }}>FAQ</span>
+      <section
+        style={{
+          padding: '48px 16px',
+          width: '100%',
+          maxWidth: '1560px',
+          margin: '0 auto',
+          boxSizing: 'border-box',
+        }}
+      >
+        <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
+            <span className="badge-pill badge-pink">
+              <HelpCircle size={13} className="text-white" />
+              CLEAR ANSWERS
+            </span>
           </div>
-          <h2 className="cn-bebas" style={{ fontSize: '38px', color: '#fff', letterSpacing: '1px' }}>
-            Frequently Asked <span style={{ background: 'linear-gradient(135deg, #dfb76c, #b89047)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Questions</span>
+          <h2
+            style={{
+              fontFamily: "'Outfit', system-ui, sans-serif",
+              fontSize: 'clamp(32px, 5vw, 48px)',
+              fontWeight: 900,
+              color: '#1E293B',
+              letterSpacing: '-1px',
+            }}
+          >
+            Frequently Asked{' '}
+            <span
+              style={{
+                backgroundColor: '#FBBF24',
+                padding: '2px 14px',
+                borderRadius: '12px',
+                border: '2px solid #1E293B',
+                boxShadow: '3px 3px 0px #1E293B',
+                display: 'inline-block',
+                transform: 'rotate(1deg)',
+              }}
+            >
+              Questions
+            </span>
           </h2>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <div style={{ maxWidth: '1080px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '16px' }}>
           {faqData.map((faq, index) => {
             const isOpen = activeFaq === index
             return (
-              <div 
-                key={index} 
-                className="glass-card" 
-                style={{ 
-                  padding: '24px 28px', 
+              <div
+                key={index}
+                className="sticker-card"
+                style={{
+                  backgroundColor: isOpen ? '#FEF08A' : '#FFFFFF',
+                  border: '2px solid #1E293B',
+                  borderRadius: '18px',
+                  padding: '22px 26px',
+                  boxShadow: isOpen ? '5px 5px 0px #1E293B' : '3px 3px 0px #1E293B',
                   cursor: 'pointer',
-                  transition: 'background 0.3s ease, border-color 0.3s'
+                  transition: 'all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)',
                 }}
                 onClick={() => setActiveFaq(isOpen ? null : index)}
               >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <h3 className="cn-syne" style={{ fontSize: '15px', fontWeight: 700, color: '#fff', margin: 0 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
+                  <h3
+                    style={{
+                      fontFamily: "'Outfit', system-ui, sans-serif",
+                      fontSize: '16px',
+                      fontWeight: 800,
+                      color: '#1E293B',
+                      margin: 0,
+                    }}
+                  >
                     {faq.question}
                   </h3>
-                  <span style={{ fontSize: '18px', color: '#dfb76c', transition: 'transform 0.3s ease', transform: isOpen ? 'rotate(45deg)' : 'none' }}>
+                  <div
+                    style={{
+                      width: '28px',
+                      height: '28px',
+                      borderRadius: '50%',
+                      backgroundColor: '#FFFFFF',
+                      border: '1.5px solid #1E293B',
+                      boxShadow: '1.5px 1.5px 0px #1E293B',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '16px',
+                      fontWeight: 900,
+                      color: '#1E293B',
+                      transform: isOpen ? 'rotate(45deg)' : 'none',
+                      transition: 'transform 0.2s ease',
+                      flexShrink: 0,
+                    }}
+                  >
                     ＋
-                  </span>
+                  </div>
                 </div>
                 {isOpen && (
-                  <div style={{ marginTop: '16px', fontSize: '13px', lineHeight: 1.7, color: '#9ca3af', borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '16px' }}>
+                  <div
+                    style={{
+                      marginTop: '14px',
+                      fontSize: '14px',
+                      lineHeight: 1.65,
+                      color: '#334155',
+                      borderTop: '2px solid #1E293B',
+                      paddingTop: '14px',
+                      fontWeight: 500,
+                    }}
+                  >
                     {faq.answer}
                   </div>
                 )}

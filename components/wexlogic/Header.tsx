@@ -1,9 +1,11 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Logo } from './Logo'
 import { useUIStore } from '@/lib/store'
+import { ArrowRight, Sparkles } from 'lucide-react'
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -18,54 +20,158 @@ export function Header() {
   const isMobileMenuOpen = useUIStore((s) => s.isMobileMenuOpen)
   const toggleMobileMenu = useUIStore((s) => s.toggleMobileMenu)
   const closeMobileMenu = useUIStore((s) => s.closeMobileMenu)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <>
       <header
         style={{
-          background: 'rgba(8, 7, 13, 0.5)',
-          backdropFilter: 'blur(16px)',
-          WebkitBackdropFilter: 'blur(16px)',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-          padding: '16px 28px',
+          backgroundColor: isScrolled ? 'rgba(255, 253, 245, 0.98)' : 'rgba(255, 253, 245, 0.94)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          borderBottom: '2px solid #1E293B',
+          padding: isScrolled ? '10px 16px' : '14px 16px',
+          boxShadow: isScrolled ? '0 4px 16px rgba(30, 41, 59, 0.12)' : 'none',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
           position: 'sticky',
           top: 0,
           zIndex: 50,
+          animation: 'headerSlideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+          transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
         }}
       >
-        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }} onClick={closeMobileMenu}>
-          <Logo size={40} />
+        <Link
+          href="/"
+          style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }}
+          onClick={closeMobileMenu}
+          className="group"
+        >
+          {/* Logo with no border box or background */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Logo size={38} />
+          </div>
           <div>
-            <div className="cn-syne" style={{ fontSize: '18px', fontWeight: 800, color: '#fff', letterSpacing: '1px' }}>
-              <span style={{ background: 'linear-gradient(135deg, #dfb76c, #b89047)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>WexLogic</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <span
+                style={{
+                  fontFamily: "'Outfit', system-ui, sans-serif",
+                  fontSize: '22px',
+                  fontWeight: 900,
+                  background: 'linear-gradient(135deg, #dfb76c 0%, #d4af37 50%, #b89047 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  color: '#d4af37',
+                  letterSpacing: '-0.5px',
+                  lineHeight: 1.1,
+                  display: 'inline-block',
+                }}
+              >
+                WexLogic
+              </span>
+              <span
+                style={{
+                  display: 'inline-block',
+                  width: '7px',
+                  height: '7px',
+                  borderRadius: '50%',
+                  backgroundColor: '#dfb76c',
+                  boxShadow: '0 0 6px rgba(223, 183, 108, 0.6)',
+                }}
+              />
             </div>
-            <div style={{ fontSize: '8px', letterSpacing: '4px', textTransform: 'uppercase', color: '#dfb76c', fontWeight: 600 }}>
-              IT company
+            <div
+              style={{
+                fontSize: '10px',
+                letterSpacing: '2px',
+                textTransform: 'uppercase',
+                color: '#b89047',
+                fontWeight: 800,
+                fontFamily: "'Outfit', system-ui, sans-serif",
+                lineHeight: 1.2,
+                marginTop: '1px',
+              }}
+            >
+              IT COMPANY
             </div>
           </div>
         </Link>
 
         {/* Desktop nav */}
-        <nav className="desktop-nav" style={{ display: 'flex', gap: '24px', alignItems: 'center' }} aria-label="Main navigation">
+        <nav
+          className="desktop-nav"
+          style={{
+            display: 'flex',
+            gap: '8px',
+            alignItems: 'center',
+            backgroundColor: '#FFFFFF',
+            border: '2px solid #1E293B',
+            borderRadius: '9999px',
+            padding: '5px 10px',
+            boxShadow: '3px 3px 0px #1E293B',
+          }}
+          aria-label="Main navigation"
+        >
           {navLinks.map(({ href, label }) => {
             const isActive = pathname === href || (href !== '/' && pathname.startsWith(href))
             return (
-              <Link key={href} href={href} className={isActive ? 'nav-link-active' : 'nav-link'}>
+              <Link
+                key={href}
+                href={href}
+                style={{
+                  fontFamily: "'Outfit', system-ui, sans-serif",
+                  fontSize: '13px',
+                  fontWeight: 700,
+                  textDecoration: 'none',
+                  padding: '5px 13px',
+                  borderRadius: '9999px',
+                  color: isActive ? '#1E293B' : '#475569',
+                  backgroundColor: isActive ? '#FBBF24' : 'transparent',
+                  border: isActive ? '2px solid #1E293B' : '2px solid transparent',
+                  boxShadow: isActive ? '2px 2px 0px #1E293B' : 'none',
+                  transition: 'all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                }}
+                className={isActive ? '' : 'hover:bg-slate-100 hover:text-slate-900'}
+              >
                 {label}
               </Link>
             )
           })}
+        </nav>
+
+        {/* CTA Button */}
+        <div className="desktop-cta" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <Link
             href="/contact"
-            className="gradient-btn-primary"
-            style={{ padding: '10px 24px', fontSize: '10px', boxShadow: '0 4px 12px rgba(99, 102, 241, 0.3)' }}
+            className="candy-btn-primary"
+            style={{ padding: '8px 18px', fontSize: '13px' }}
           >
-            Free Call
+            <span>Free Call</span>
+            <div
+              style={{
+                width: '20px',
+                height: '20px',
+                borderRadius: '50%',
+                backgroundColor: '#FFFFFF',
+                color: '#1E293B',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <ArrowRight size={12} strokeWidth={3} />
+            </div>
           </Link>
-        </nav>
+        </div>
 
         {/* Hamburger button — mobile only */}
         <button
@@ -75,18 +181,49 @@ export function Header() {
           onClick={toggleMobileMenu}
           style={{
             display: 'none',
-            background: 'rgba(255,255,255,0.06)',
-            border: '1px solid rgba(255,255,255,0.12)',
-            borderRadius: '8px',
-            padding: '8px 10px',
+            backgroundColor: '#FFFFFF',
+            border: '2px solid #1E293B',
+            borderRadius: '12px',
+            padding: '9px 11px',
             cursor: 'pointer',
             flexDirection: 'column',
             gap: '5px',
+            boxShadow: '3px 3px 0px #1E293B',
           }}
         >
-          <span style={{ width: 22, height: 2, background: '#dfb76c', display: 'block', borderRadius: 2, transition: 'all 0.25s', transform: isMobileMenuOpen ? 'rotate(45deg) translateY(7px)' : 'none' }} />
-          <span style={{ width: 22, height: 2, background: '#dfb76c', display: 'block', borderRadius: 2, transition: 'all 0.25s', opacity: isMobileMenuOpen ? 0 : 1 }} />
-          <span style={{ width: 22, height: 2, background: '#dfb76c', display: 'block', borderRadius: 2, transition: 'all 0.25s', transform: isMobileMenuOpen ? 'rotate(-45deg) translateY(-7px)' : 'none' }} />
+          <span
+            style={{
+              width: 22,
+              height: 2.5,
+              backgroundColor: '#1E293B',
+              display: 'block',
+              borderRadius: 2,
+              transition: 'all 0.25s',
+              transform: isMobileMenuOpen ? 'rotate(45deg) translateY(7.5px)' : 'none',
+            }}
+          />
+          <span
+            style={{
+              width: 22,
+              height: 2.5,
+              backgroundColor: '#1E293B',
+              display: 'block',
+              borderRadius: 2,
+              transition: 'all 0.25s',
+              opacity: isMobileMenuOpen ? 0 : 1,
+            }}
+          />
+          <span
+            style={{
+              width: 22,
+              height: 2.5,
+              backgroundColor: '#1E293B',
+              display: 'block',
+              borderRadius: 2,
+              transition: 'all 0.25s',
+              transform: isMobileMenuOpen ? 'rotate(-45deg) translateY(-7.5px)' : 'none',
+            }}
+          />
         </button>
       </header>
 
@@ -94,13 +231,19 @@ export function Header() {
       {isMobileMenuOpen && (
         <div
           style={{
-            position: 'fixed', top: 73, left: 0, right: 0, zIndex: 49,
-            background: 'rgba(8, 7, 13, 0.97)',
-            backdropFilter: 'blur(20px)',
-            borderBottom: '1px solid rgba(255,255,255,0.08)',
-            padding: '24px 28px 32px',
-            display: 'flex', flexDirection: 'column', gap: '8px',
-            animation: 'fadeIn 0.2s ease'
+            position: 'fixed',
+            top: 65,
+            left: 0,
+            right: 0,
+            zIndex: 49,
+            backgroundColor: '#FFFDF5',
+            borderBottom: '3px solid #1E293B',
+            boxShadow: '0 8px 0px #1E293B',
+            padding: '20px 24px 28px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '10px',
+            animation: 'fadeIn 0.2s ease',
           }}
         >
           {navLinks.map(({ href, label }) => {
@@ -110,27 +253,61 @@ export function Header() {
                 key={href}
                 href={href}
                 onClick={closeMobileMenu}
-                className={isActive ? 'nav-link-active' : 'nav-link'}
-                style={{ padding: '12px 0', fontSize: '15px', display: 'block', borderBottom: '1px solid rgba(255,255,255,0.05)' }}
+                style={{
+                  padding: '10px 16px',
+                  fontSize: '15px',
+                  fontWeight: 700,
+                  fontFamily: "'Outfit', system-ui, sans-serif",
+                  borderRadius: '12px',
+                  border: '2px solid #1E293B',
+                  backgroundColor: isActive ? '#FBBF24' : '#FFFFFF',
+                  color: '#1E293B',
+                  boxShadow: isActive ? '3px 3px 0px #1E293B' : '2px 2px 0px #CBD5E1',
+                  textDecoration: 'none',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                }}
               >
-                {label}
+                <span>{label}</span>
+                {isActive && <Sparkles size={16} />}
               </Link>
             )
           })}
           <Link
             href="/contact"
-            className="gradient-btn-primary"
+            className="candy-btn-primary"
             onClick={closeMobileMenu}
-            style={{ marginTop: '12px', textAlign: 'center', padding: '14px', fontSize: '11px', letterSpacing: '2px' }}
+            style={{
+              marginTop: '8px',
+              textAlign: 'center',
+              padding: '12px',
+              fontSize: '14px',
+            }}
           >
-            Book Free Call
+            <span>Book Free Call</span>
+            <div
+              style={{
+                width: '20px',
+                height: '20px',
+                borderRadius: '50%',
+                backgroundColor: '#FFFFFF',
+                color: '#1E293B',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <ArrowRight size={12} strokeWidth={3} />
+            </div>
           </Link>
         </div>
       )}
 
       <style>{`
-        @media (max-width: 768px) {
+        @media (max-width: 860px) {
           .desktop-nav { display: none !important; }
+          .desktop-cta { display: none !important; }
           .hamburger-btn { display: flex !important; }
         }
       `}</style>

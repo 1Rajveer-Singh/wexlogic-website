@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination, Navigation } from 'swiper/modules'
+import { Sparkles, Star } from 'lucide-react'
 
 // Import Swiper styles
 import 'swiper/css'
@@ -11,168 +12,344 @@ import 'swiper/css/navigation'
 
 const testimonials = [
   {
-    text: "WexLogic took our vision and amplified it by 10x. The cinematic CGI ads they produced resulted in our biggest sales quarter ever, driving massive engagement on Instagram and TikTok.",
+    text: "WexLogic took our vision and amplified it by 10x. The cinematic CGI ads they produced resulted in our biggest sales quarter ever, driving massive viral engagement across Instagram and TikTok.",
     author: "Sarah Jenkins",
     role: "CMO, TechNova",
     metrics: "+340% Traffic Lift",
+    metricColor: '#8B5CF6',
     avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80",
-    glow: '#dfb76c',
-    rating: 5
+    rating: 5,
   },
   {
     text: "Their approach to digital layouts helped us stand out in a sea of boring corporate templates. They built a custom Next.js storefront that loads in 0.8 seconds and cut our bounce rate in half.",
     author: "David Chen",
     role: "Founder, Disrupt Corp",
     metrics: "-45% Bounce Rate",
+    metricColor: '#F472B6',
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80",
-    glow: '#c5a059',
-    rating: 5
+    rating: 5,
   },
   {
-    text: "The custom CRM integrations they executed solved our lead leakage problem completely. Their workflow automations run flawlessly and save our remote sales agents hours of work every day.",
+    text: "The custom CRM integrations they executed solved our lead leakage problem completely. Their workflow automations run flawlessly and save our remote sales agents hours of manual work every single day.",
     author: "Emily Ross",
     role: "Director of Ops, Solara",
     metrics: "+42% Conversion Speed",
+    metricColor: '#FBBF24',
     avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&h=150&q=80",
-    glow: '#e5c185',
-    rating: 5
+    rating: 5,
   },
   {
-    text: "Nova Logistics' ledger and tracking systems are now fast and secure. The offline-first design allows our warehouse operators to record fleet activities without any sync delay.",
+    text: "Nova Logistics' ledger and tracking systems are now lightning fast and rock solid. The offline-first design allows our warehouse operators to record fleet activities without any sync delay.",
     author: "Marcus Vance",
     role: "COO, Nova Logistics",
     metrics: "99.98% Inventory Sync",
+    metricColor: '#34D399',
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&h=150&q=80",
-    glow: '#a37f3d',
-    rating: 5
-  }
+    rating: 5,
+  },
 ]
 
 export function TestimonialsSection() {
   return (
-    <section id="testimonies" style={{ background: 'radial-gradient(circle at 50% 0%, rgba(223, 183, 108, 0.12) 0%, #040307 70%)', padding: '80px 28px', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
-      {/* Header */}
-      <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '56px', flexWrap: 'wrap', gap: '20px' }}>
-        <div>
-          <div style={{ background: 'rgba(223, 183, 108, 0.24)', border: '1px solid rgba(223, 183, 108, 0.3)', display: 'inline-block', padding: '6px 18px', borderRadius: '99px', marginBottom: '16px' }}>
-            <span style={{ fontSize: '10px', letterSpacing: '4px', textTransform: 'uppercase', fontWeight: 700, color: '#dfb76c' }}>
-              Feedback
-            </span>
-          </div>
-          <h2 className="cn-bebas" style={{ fontSize: 'clamp(42px, 6vw, 68px)', letterSpacing: '1px', color: '#fff', lineHeight: 1 }}>
-            Client <span style={{ background: 'linear-gradient(135deg, #dfb76c, #b89047)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Testimonies</span>
-          </h2>
-        </div>
-        <div style={{ fontSize: '12px', letterSpacing: '2px', textTransform: 'uppercase', color: '#9ca3af', fontWeight: 600, textAlign: 'right' }}>
-          Real Outcomes · Industry Leaders
-        </div>
-      </div>
-
-      {/* Swiper Slider */}
-      <div style={{ position: 'relative', width: '100%' }} className="testimonials-swiper-container">
-        <style dangerouslySetInnerHTML={{__html: `
-          .testimonials-swiper-container .swiper-pagination-bullet {
-            background: rgba(255, 255, 255, 0.15) !important;
-            opacity: 1 !important;
-            width: 8px;
-            height: 8px;
-            transition: all 0.3s ease;
-          }
-          .testimonials-swiper-container .swiper-pagination-bullet-active {
-            background: #dfb76c !important;
-            width: 24px;
-            border-radius: 99px;
-          }
-        `}} />
-        <Swiper
-          modules={[Autoplay, Pagination, Navigation]}
-          spaceBetween={32}
-          slidesPerView={1}
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
-          pagination={{ clickable: true }}
-          breakpoints={{
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 }
-          }}
-          style={{ paddingBottom: '56px' }}
-        >
-          {testimonials.map((item, i) => (
-            <SwiperSlide key={i} style={{ height: 'auto' }}>
-              <div 
-                className="glass-card"
-                style={{ 
-                  padding: '40px 32px', 
-                  position: 'relative',
-                  overflow: 'hidden',
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  minHeight: '380px'
-                }}
-              >
-                {/* Corner backglow */}
-                <div style={{ position: 'absolute', top: 0, left: 0, width: '100px', height: '100px', background: item.glow, opacity: 0.05, filter: 'blur(35px)', pointerEvents: 'none' }} />
-                
-                <div>
-                  {/* Rating Stars and Quote Icon */}
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
-                    <div style={{ display: 'flex', gap: '4px' }}>
-                      {Array.from({ length: item.rating }).map((_, idx) => (
-                        <span key={idx} style={{ color: '#fbbf24', fontSize: '14px' }}>★</span>
-                      ))}
-                    </div>
-                    <div style={{ fontSize: '42px', background: 'linear-gradient(135deg, #dfb76c, #b89047)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', lineHeight: 1, fontFamily: 'serif', fontWeight: 'bold' }}>“</div>
-                  </div>
-
-                  <p className="cn-syne" style={{ fontSize: '15px', fontWeight: 500, color: '#f3f4f6', marginBottom: '28px', lineHeight: 1.6 }}>
-                    {item.text}
-                  </p>
-                </div>
-
-                {/* Footer details with Avatar & Metrics */}
-                <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <div style={{ position: 'relative', width: '38px', height: '38px', borderRadius: '50%', overflow: 'hidden', border: '1.5px solid rgba(255, 255, 255, 0.12)' }}>
-                      <Image 
-                        src={item.avatar} 
-                        alt={item.author} 
-                        fill 
-                        style={{ objectFit: 'cover' }} 
-                        sizes="38px"
-                      />
-                    </div>
-                    <div>
-                      <div style={{ fontSize: '12px', fontWeight: 700, color: '#fff', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{item.author}</div>
-                      <div style={{ fontSize: '10px', color: '#9ca3af', marginTop: '1px' }}>{item.role}</div>
-                    </div>
-                  </div>
-                  <div style={{ background: 'rgba(223, 183, 108, 0.24)', border: '1px solid rgba(223, 183, 108, 0.25)', padding: '4px 10px', borderRadius: '6px' }}>
-                    <span style={{ fontSize: '9px', fontWeight: 700, color: '#dfb76c', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{item.metrics}</span>
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-
-      {/* Philosophy Quote */}
-      <div 
-        className="glass-card"
-        style={{ 
-          marginTop: '40px', 
-          padding: '60px 40px', 
-          textAlign: 'center',
-          position: 'relative',
-          overflow: 'hidden'
+    <section
+      id="testimonies"
+      style={{
+        backgroundColor: '#FFFDF5',
+        padding: '40px 16px 56px',
+        borderBottom: '2px solid #1E293B',
+      }}
+    >
+      <div
+        style={{
+          width: '100%',
+          maxWidth: '1560px',
+          margin: '0 auto',
+          padding: '0 6px',
+          boxSizing: 'border-box',
         }}
       >
-        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '300px', height: '150px', background: 'linear-gradient(135deg, #dfb76c, #b89047)', opacity: 0.05, filter: 'blur(50px)', pointerEvents: 'none' }} />
-        
-        <div className="cn-bebas" style={{ fontSize: 'clamp(28px, 5vw, 48px)', color: '#fff', letterSpacing: '2px', lineHeight: 1.2, position: 'relative', zIndex: 1 }}>
-          “Design is not just what it looks like.<br/>
-          <span style={{ background: 'linear-gradient(135deg, #dfb76c, #b89047)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Design is how it works.</span>”
+        {/* Header */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'flex-end',
+            justifyContent: 'space-between',
+            marginBottom: '56px',
+            flexWrap: 'wrap',
+            gap: '20px',
+          }}
+        >
+          <div>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
+              <span className="badge-pill badge-yellow">
+                <Sparkles size={13} className="text-[#1E293B]" />
+                CLIENT STORIES
+              </span>
+            </div>
+            <h2
+              style={{
+                fontFamily: "'Outfit', system-ui, sans-serif",
+                fontSize: 'clamp(36px, 5.5vw, 60px)',
+                fontWeight: 900,
+                color: '#1E293B',
+                letterSpacing: '-1px',
+                lineHeight: 1.1,
+              }}
+            >
+              Client{' '}
+              <span
+                style={{
+                  backgroundColor: '#34D399',
+                  color: '#1E293B',
+                  padding: '2px 14px',
+                  borderRadius: '14px',
+                  border: '2px solid #1E293B',
+                  boxShadow: '3px 3px 0px #1E293B',
+                  display: 'inline-block',
+                }}
+              >
+                Testimonies
+              </span>
+            </h2>
+          </div>
+          <div
+            style={{
+              fontFamily: "'Outfit', system-ui, sans-serif",
+              fontSize: '13px',
+              letterSpacing: '1px',
+              textTransform: 'uppercase',
+              color: '#64748B',
+              fontWeight: 700,
+              textAlign: 'right',
+            }}
+          >
+            Verified Outcomes · Real Founders
+          </div>
+        </div>
+
+        {/* Swiper Slider */}
+        <div style={{ position: 'relative', width: '100%' }} className="testimonials-swiper-container">
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `
+            .testimonials-swiper-container .swiper-pagination-bullet {
+              background: #CBD5E1 !important;
+              border: 1.5px solid #1E293B !important;
+              opacity: 1 !important;
+              width: 10px;
+              height: 10px;
+              transition: all 0.3s ease;
+            }
+            .testimonials-swiper-container .swiper-pagination-bullet-active {
+              background: #8B5CF6 !important;
+              width: 28px;
+              border-radius: 99px;
+            }
+          `,
+            }}
+          />
+          <Swiper
+            modules={[Autoplay, Pagination, Navigation]}
+            spaceBetween={20}
+            slidesPerView={1}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            pagination={{ clickable: true }}
+            breakpoints={{
+              640: { slidesPerView: 1.5, spaceBetween: 16 },
+              768: { slidesPerView: 2, spaceBetween: 20 },
+              1024: { slidesPerView: 3, spaceBetween: 20 },
+              1360: { slidesPerView: 4, spaceBetween: 20 },
+            }}
+            style={{ paddingBottom: '60px' }}
+          >
+            {testimonials.map((item, i) => (
+              <SwiperSlide key={i} style={{ height: 'auto' }}>
+                <div
+                  className="sticker-card"
+                  style={{
+                    backgroundColor: '#FFFFFF',
+                    border: '2px solid #1E293B',
+                    borderRadius: '24px',
+                    padding: '36px 28px',
+                    position: 'relative',
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    minHeight: '390px',
+                    boxShadow: '6px 6px 0px #1E293B',
+                  }}
+                >
+                  <div>
+                    {/* Rating Stars and Quote Icon */}
+                    <div
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        marginBottom: '20px',
+                      }}
+                    >
+                      <div
+                        style={{
+                          display: 'flex',
+                          gap: '4px',
+                          backgroundColor: '#FEF08A',
+                          border: '1.5px solid #1E293B',
+                          padding: '4px 10px',
+                          borderRadius: '9999px',
+                          boxShadow: '2px 2px 0px #1E293B',
+                        }}
+                      >
+                        {Array.from({ length: item.rating }).map((_, idx) => (
+                          <span key={idx} style={{ color: '#D97706', fontSize: '13px' }}>
+                            ★
+                          </span>
+                        ))}
+                      </div>
+                      <div
+                        style={{
+                          fontSize: '44px',
+                          color: '#8B5CF6',
+                          lineHeight: 0.8,
+                          fontFamily: 'serif',
+                          fontWeight: 'bold',
+                        }}
+                      >
+                        “
+                      </div>
+                    </div>
+
+                    <p
+                      style={{
+                        fontSize: '15px',
+                        fontWeight: 500,
+                        color: '#334155',
+                        marginBottom: '24px',
+                        lineHeight: 1.65,
+                      }}
+                    >
+                      {item.text}
+                    </p>
+                  </div>
+
+                  {/* Footer details with Avatar & Metrics */}
+                  <div
+                    style={{
+                      borderTop: '2px solid #F1F5F9',
+                      paddingTop: '18px',
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      marginTop: 'auto',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                      <div
+                        style={{
+                          position: 'relative',
+                          width: '42px',
+                          height: '42px',
+                          borderRadius: '50%',
+                          overflow: 'hidden',
+                          border: '2px solid #1E293B',
+                          boxShadow: '2px 2px 0px #1E293B',
+                        }}
+                      >
+                        <Image
+                          src={item.avatar}
+                          alt={item.author}
+                          fill
+                          style={{ objectFit: 'cover' }}
+                          sizes="42px"
+                        />
+                      </div>
+                      <div>
+                        <div
+                          style={{
+                            fontFamily: "'Outfit', system-ui, sans-serif",
+                            fontSize: '14px',
+                            fontWeight: 800,
+                            color: '#1E293B',
+                          }}
+                        >
+                          {item.author}
+                        </div>
+                        <div style={{ fontSize: '11px', color: '#64748B', fontWeight: 600 }}>
+                          {item.role}
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      style={{
+                        backgroundColor: '#FFFFFF',
+                        border: '1.5px solid #1E293B',
+                        boxShadow: '2px 2px 0px #1E293B',
+                        padding: '4px 10px',
+                        borderRadius: '9999px',
+                      }}
+                    >
+                      <span
+                        style={{
+                          fontSize: '11px',
+                          fontWeight: 800,
+                          color: item.metricColor,
+                          fontFamily: "'Outfit'",
+                        }}
+                      >
+                        {item.metrics}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        {/* Philosophy Quote Banner */}
+        <div
+          className="sticker-card"
+          style={{
+            marginTop: '32px',
+            padding: '50px 36px',
+            textAlign: 'center',
+            backgroundColor: '#FEF08A',
+            border: '3px solid #1E293B',
+            boxShadow: '8px 8px 0px 0px #1E293B',
+            borderRadius: '28px',
+            position: 'relative',
+            overflow: 'hidden',
+          }}
+        >
+
+          <div
+            style={{
+              fontFamily: "'Outfit', system-ui, sans-serif",
+              fontSize: 'clamp(26px, 4vw, 44px)',
+              color: '#1E293B',
+              fontWeight: 900,
+              letterSpacing: '-0.5px',
+              lineHeight: 1.25,
+            }}
+          >
+            “Design is not just what it looks like.{' '}
+            <span
+              style={{
+                backgroundColor: '#8B5CF6',
+                color: '#FFFFFF',
+                padding: '2px 14px',
+                borderRadius: '12px',
+                border: '2px solid #1E293B',
+                boxShadow: '3px 3px 0px #1E293B',
+                display: 'inline-block',
+                transform: 'rotate(-1deg)',
+              }}
+            >
+              Design is how it works.
+            </span>
+            ”
+          </div>
         </div>
       </div>
     </section>
